@@ -7,6 +7,9 @@
     <!-- Fuente limpia similar al diseño (Inter) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <!-- Carga de tus archivos CSS y JS con Vite -->
+    <!--Miguel prueba-->
+    <!--No quedo la mmada-->
+    <!--Creo ya quedo-->
     @vite(['resources/css/login.css', 'resources/js/login.js'])
 </head>
 <body>
