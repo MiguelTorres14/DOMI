@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Apunta directamente a tu archivo resources/views/index.blade.php
+Route::view('/', 'login');
+Route::view('/login', 'login');

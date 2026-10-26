@@ -1,13 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Buscamos el input de contraseña y el botón del ojo por su ID
+// Función para alternar la visibilidad de la contraseña y cambiar el ícono del ojo
+const initPasswordToggle = () => {
     const passwordInput = document.getElementById('password');
     const toggleBtn = document.getElementById('togglePassword');
+    const eyeOpen = document.getElementById('eyeOpen');
+    const eyeClosed = document.getElementById('eyeClosed');
 
     if (passwordInput && toggleBtn) {
         toggleBtn.addEventListener('click', () => {
-            // Si el tipo es 'password', lo cambiamos a 'text', y viceversa
-            const isPassword = passwordInput.getAttribute('type') === 'password';
-            passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+
+            if (eyeOpen && eyeClosed) {
+                eyeOpen.style.display = isPassword ? 'none' : 'block';
+                eyeClosed.style.display = isPassword ? 'block' : 'none';
+            }
         });
     }
-});
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPasswordToggle);
+} else {
+    initPasswordToggle();
+}
