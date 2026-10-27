@@ -28,7 +28,6 @@
             <!-- Formulario de inicio de sesión -->
             <div class="card-body">
                 <form action="#" method="POST">
-                    @csrf
                     
                     <div class="form-group">
                         <label for="matricula" class="form-label">Matrícula</label>
