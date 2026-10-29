@@ -1,0 +1,109 @@
+/* Reutilización del sidebar y layout principal */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: #f4f7fc; color: #1e293b; }
+.dashboard-layout { display: flex; min-height: 100vh; }
+
+.sidebar { width: 240px; background-color: #17368a; color: #ffffff; display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 100; }
+.sidebar-brand { display: flex; align-items: center; gap: 12px; padding: 22px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.brand-icon { width: 36px; height: 36px; background-color: rgba(255, 255, 255, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.brand-name { font-size: 18px; font-weight: 800; letter-spacing: 0.5px; }
+.sidebar-nav { flex: 1; padding: 20px 12px; display: flex; flex-direction: column; gap: 6px; }
+.nav-item { display: flex; align-items: center; gap: 12px; padding: 11px 16px; border-radius: 999px; color: rgba(255, 255, 255, 0.8); text-decoration: none; font-size: 13px; font-weight: 500; transition: all 0.2s ease; }
+.nav-item:hover { background-color: rgba(255, 255, 255, 0.1); color: #ffffff; }
+.nav-item.active { background-color: #ffffff; color: #17368a; font-weight: 700; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12); }
+.sidebar-footer { padding: 16px 20px; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; gap: 10px; }
+.user-avatar-sm { width: 34px; height: 34px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+.user-name { font-size: 12.5px; font-weight: 600; }
+.user-semester { font-size: 11px; color: rgba(255, 255, 255, 0.65); margin-top: 2px; }
+
+.main-wrapper { flex: 1; margin-left: 240px; display: flex; flex-direction: column; }
+.topbar { height: 64px; background-color: #ffffff; padding: 0 34px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e2e8f0; }
+.page-title { font-size: 15px; font-weight: 700; color: #17368a; }
+.topbar-actions { display: flex; align-items: center; gap: 16px; }
+.greeting { font-size: 13px; color: #64748b; }
+.greeting strong { color: #1e293b; }
+.notification-btn { position: relative; background: none; border: none; color: #64748b; cursor: pointer; padding: 4px; display: flex; align-items: center; }
+.notification-dot { position: absolute; top: 2px; right: 2px; width: 7px; height: 7px; background-color: #ef4444; border-radius: 50%; }
+.profile-pill { display: flex; align-items: center; gap: 6px; cursor: pointer; color: #64748b; }
+.avatar-circle { width: 32px; height: 32px; background-color: #2563eb; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+
+/* Contenido de Detalle de Materia */
+.content-area { padding: 30px 40px; }
+
+/* Encabezado */
+.btn-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #64748b; text-decoration: none; margin-bottom: 24px; transition: color 0.2s; }
+.btn-back:hover { color: #1e293b; }
+
+.course-title-box { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+.course-icon { font-size: 24px; font-weight: 800; display: flex; align-items: center; }
+.text-blue { color: #1d4ed8; }
+
+.course-title-box h1 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+.course-title-box p { font-size: 13.5px; color: #94a3b8; }
+
+/* Navegación por pestañas */
+.tabs-container { display: flex; background-color: #ffffff; border-radius: 12px; padding: 6px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02); border: 1px solid #f1f5f9; margin-bottom: 24px; }
+.tab-btn { flex: 1; display: flex; justify-content: center; align-items: center; gap: 8px; padding: 12px 0; background: none; border: none; border-radius: 8px; font-size: 13.5px; font-weight: 600; color: #64748b; cursor: pointer; transition: all 0.2s; }
+.tab-btn:hover { color: #1e293b; }
+.tab-btn.active { background-color: #f8fafc; color: #0f172a; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05); }
+
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* TAB 1: Materiales y Acordeón */
+.accordion-item { background-color: #ffffff; border-radius: 12px; margin-bottom: 16px; border: 1px solid #eef2f6; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02); }
+.accordion-header { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background: none; border: none; cursor: pointer; text-align: left; }
+.unit-title { font-size: 14.5px; font-weight: 700; color: #0f172a; }
+.unit-meta { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: #94a3b8; font-weight: 500; }
+
+.accordion-body { border-top: 1px solid #f1f5f9; padding: 8px 24px 24px; }
+.document-item { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid #f1f5f9; }
+.document-item:last-child { border-bottom: none; padding-bottom: 0; }
+.doc-icon { width: 40px; height: 40px; background-color: #f8fafc; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #cbd5e1; }
+.doc-info { flex: 1; }
+.doc-info h4 { font-size: 13.5px; font-weight: 600; color: #1e293b; margin-bottom: 4px; }
+.doc-info p { font-size: 12px; color: #94a3b8; margin-bottom: 8px; }
+
+.doc-tags { display: flex; gap: 8px; align-items: center; }
+.tag-type { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 4px; }
+.tag-type.pdf { background-color: #fee2e2; color: #dc2626; }
+.tag-type.pptx { background-color: #ffedd5; color: #ea580c; }
+.tag-size { font-size: 11px; color: #94a3b8; font-weight: 500; }
+
+.btn-download { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background-color: #eff6ff; color: #2563eb; border-radius: 6px; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+.btn-download:hover { background-color: #dbeafe; }
+
+/* TAB 2: Mis archivos */
+.upload-zone { background-color: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 12px; padding: 40px; text-align: center; margin-bottom: 16px; transition: border-color 0.2s; }
+.upload-zone:hover { border-color: #2563eb; }
+.upload-icon { margin-bottom: 16px; }
+.upload-text { font-size: 14px; font-weight: 600; color: #475569; margin-bottom: 6px; }
+.upload-sub { font-size: 12px; color: #94a3b8; }
+.mt-4 { margin-top: 16px; }
+
+.btn-primary-blue { display: inline-block; padding: 10px 20px; background-color: #2563eb; color: #ffffff; border-radius: 999px; font-size: 13px; font-weight: 600; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+.btn-primary-blue:hover { background-color: #1d4ed8; }
+
+.empty-state { background-color: #ffffff; border-radius: 12px; padding: 32px; text-align: center; border: 1px solid #f1f5f9; margin-bottom: 16px; }
+.empty-state svg { margin-bottom: 12px; }
+.empty-state p { font-size: 13px; color: #94a3b8; font-weight: 500; }
+
+.feature-banner { display: flex; justify-content: space-between; align-items: center; background-color: #fdf4ff; border: 1px solid #fae8ff; border-radius: 12px; padding: 20px; }
+.feature-content { display: flex; align-items: center; gap: 16px; }
+.feature-content h5 { font-size: 13.5px; font-weight: 700; color: #86198f; margin-bottom: 4px; }
+.feature-content p { font-size: 12px; color: #a21caf; }
+.badge-soon { background-color: #fce7f3; color: #db2777; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+
+/* TAB 3: Cuestionarios */
+.quiz-list { display: flex; flex-direction: column; gap: 16px; }
+.quiz-item { background-color: #ffffff; border-radius: 12px; padding: 20px 24px; display: flex; align-items: center; gap: 16px; border: 1px solid #f1f5f9; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02); }
+.quiz-icon { width: 44px; height: 44px; background-color: #eff6ff; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+.quiz-info { flex: 1; }
+.quiz-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.quiz-title-row h4 { font-size: 14px; font-weight: 700; color: #1e293b; }
+.badge-level.basic { font-size: 10px; font-weight: 700; padding: 2px 8px; background-color: #dcfce7; color: #166534; border-radius: 4px; }
+.quiz-info p { font-size: 12.5px; color: #94a3b8; font-weight: 500; }
+.quiz-btn { padding: 8px 24px; }
+
+/* Botón flotante */
+.help-fab { position: fixed; bottom: 20px; right: 20px; width: 34px; height: 34px; border-radius: 50%; background-color: #ffffff; border: 1px solid #cbd5e1; color: #475569; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); display: flex; align-items: center; justify-content: center; }

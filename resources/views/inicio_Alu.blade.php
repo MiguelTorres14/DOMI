@@ -42,7 +42,7 @@
                     <span>Perfil del alumno</span>
                 </a>
 
-                <a href="#" class="nav-item">
+                <a href="{{ url('/materias') }}" class="nav-item">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
                         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
@@ -50,7 +50,7 @@
                     <span>Materias</span>
                 </a>
 
-                <a href="#" class="nav-item">
+                <a href="{{ url('/progreso') }}" class="nav-item">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="18" y1="20" x2="18" y2="10"/>
                         <line x1="12" y1="20" x2="12" y2="4"/>
@@ -158,22 +158,7 @@
                             </div>
                             <h4>Mis materias</h4>
                             <p>Explora las asignaturas y materiales organizados por semestre</p>
-                            <a href="#" class="card-btn btn-outline-purple">Ver materias</a>
-                        </div>
-
-                        <!-- Tarjeta 3: Materiales y cuestionarios -->
-                        <div class="access-card">
-                            <div class="card-icon icon-green">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                    <polyline points="14 2 14 8 20 8"/>
-                                    <line x1="16" y1="13" x2="8" y2="13"/>
-                                    <line x1="16" y1="17" x2="8" y2="17"/>
-                                </svg>
-                            </div>
-                            <h4>Materiales y cuestionarios</h4>
-                            <p>Consulta documentos, sube tus archivos y practica con preguntas</p>
-                            <a href="#" class="card-btn btn-outline-green">Estudiar ahora</a>
+                            <a href="{{ url('/materias') }}" class="card-btn btn-outline-purple">Ver materias</a>
                         </div>
 
                         <!-- Tarjeta 4: Mi progreso -->
@@ -187,7 +172,7 @@
                             </div>
                             <h4>Mi progreso</h4>
                             <p>Visualiza las actividades completadas y tu avance en la plataforma</p>
-                            <a href="#" class="card-btn btn-outline-yellow">Ver progreso</a>
+                            <a href="{{ url('/progreso') }}" class="card-btn btn-outline-yellow">Ver progreso</a>
                         </div>
 
                         <!-- Tarjeta 5: Mis recompensas -->
