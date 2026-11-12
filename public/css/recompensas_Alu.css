@@ -1,0 +1,146 @@
+/* ===== Banner ===== */
+.rewards-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 36px 40px;
+    border-radius: 18px;
+    color: #fff;
+    background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 40%, #f97316 100%);
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+.rewards-banner h1 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0 0 10px;
+}
+.rewards-banner p { margin: 0 0 18px; font-size: 15px; opacity: .95; }
+.rewards-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.rewards-badge {
+    background: rgba(255, 255, 255, .25);
+    padding: 7px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+}
+.rewards-watermark { opacity: .25; margin-right: 10px; }
+
+/* ===== Progreso hacia la próxima recompensa ===== */
+.next-reward-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 26px 28px;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, .06);
+    margin-bottom: 24px;
+}
+.next-reward-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+}
+.next-reward-text { margin: 0 0 18px; font-size: 14px; color: #334155; }
+.reward-progress-bg {
+    height: 12px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+}
+.reward-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #fbbf24, #f97316);
+    border-radius: 999px;
+    transition: width .6s ease;
+}
+.reward-progress-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #64748b;
+}
+.reward-progress-labels strong { color: #ea580c; font-weight: 800; }
+
+/* ===== Cuadrícula de recompensas ===== */
+.rewards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+.reward-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, .06);
+}
+.reward-card-top { display: flex; gap: 16px; margin-bottom: 18px; }
+.reward-icon {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    color: #64748b;
+    border-radius: 14px;
+}
+.reward-title-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.reward-title-row h4 { margin: 0; font-size: 20px; font-weight: 800; color: #0f172a; }
+.reward-info p { margin: 6px 0 0; font-size: 14px; color: #475569; line-height: 1.4; }
+
+.reward-status {
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+}
+.reward-status.locked    { background: #e5e7eb; color: #475569; }
+.reward-status.available { background: #dcfce7; color: #15803d; }
+.reward-status.redeemed  { background: #dbeafe; color: #1d4ed8; }
+
+.reward-value { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
+.value-big { font-size: 28px; font-weight: 800; }
+.value-small { font-size: 13px; color: #64748b; }
+.text-orange { color: #ea580c; }
+.text-purple { color: #7c3aed; }
+
+.reward-meta { margin: 0 0 12px; font-size: 13px; color: #475569; }
+.reward-meta strong { color: #1e293b; }
+
+.reward-btn {
+    display: block;
+    width: 100%;
+    margin-top: 18px;
+    padding: 13px;
+    border: none;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #64748b;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: not-allowed;
+}
+.reward-btn.unlocked {
+    background: #f97316;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+.reward-btn.unlocked:hover { background: #ea580c; }
+
+@media (max-width: 900px) {
+    .rewards-grid { grid-template-columns: 1fr; }
+    .rewards-watermark { display: none; }
+}

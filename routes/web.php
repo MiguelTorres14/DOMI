@@ -12,3 +12,4 @@ Route::view('/perfil', 'perfil_Alu');
 Route::view('/materias', 'materias_Alu');
 Route::view('/materia/detalle', 'materia_detalle_Alu');
 Route::view('/progreso', 'progreso_Alu');
+Route::view('/recompensas', 'recompensas_Alu');
