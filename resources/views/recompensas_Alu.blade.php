@@ -9,6 +9,12 @@
 
 @section('content')
 
+    @php
+        // Calculamos los datos reales del alumno
+        $aprobados = Auth::user()->attempts()->where('passed', true)->count();
+        $altaCalificacion = Auth::user()->attempts()->where('passed', true)->where('score', '>=', 80)->count();
+    @endphp
+
     <!-- Banner principal -->
     <section class="rewards-banner">
         <div class="rewards-banner-text">
@@ -22,10 +28,8 @@
             <p>Aprende, practica y supera tus cuestionarios para desbloquear beneficios por dedicación.</p>
 
             <div class="rewards-badges">
-                {{-- [PHP/BD]: {{ $alumno->cuestionarios_completados }} --}}
-                <span class="rewards-badge">0 cuestionarios completados</span>
-                {{-- [PHP/BD]: {{ $alumno->cuestionarios_80 }} --}}
-                <span class="rewards-badge">0 con puntaje ≥80%</span>
+                <span class="rewards-badge">{{ $aprobados }} cuestionarios completados</span>
+                <span class="rewards-badge">{{ $altaCalificacion }} con puntaje ≥80%</span>
             </div>
         </div>
 
@@ -50,26 +54,20 @@
             Progreso hacia tu próxima recompensa
         </h3>
 
-        {{-- [PHP/BD]: {{ $proxima->nombre }}: necesitas {{ $proxima->faltantes }} cuestionario(s) más con ≥80% de aciertos --}}
         <p class="next-reward-text">Descuento en Cafetería: necesitas 3 cuestionario(s) más con ≥80% de aciertos</p>
 
         <div class="reward-progress-bg">
-            {{-- [PHP/BD]: style="width: {{ $proxima->porcentaje }}%;" --}}
-            <div class="reward-progress-fill" style="width: 0%;"></div>
+            <div class="reward-progress-fill" style="width: {{ $altaCalificacion >= 3 ? 100 : ($altaCalificacion / 3) * 100 }}%;"></div>
         </div>
 
         <div class="reward-progress-labels">
-            {{-- [PHP/BD]: {{ $proxima->avance }}/{{ $proxima->requeridos }} cuestionarios con ≥80% --}}
-            <span>0/3 cuestionarios con ≥80%</span>
-            {{-- [PHP/BD]: {{ $proxima->porcentaje }}% --}}
-            <strong>0%</strong>
+            <span>{{ $altaCalificacion }}/3 cuestionarios con ≥80%</span>
+            <strong>{{ $altaCalificacion >= 3 ? 100 : round(($altaCalificacion / 3) * 100) }}%</strong>
         </div>
     </section>
 
     <!-- Cuadrícula de recompensas -->
     <section class="rewards-grid">
-
-        {{-- [PHP/BD]: @foreach($recompensas as $recompensa) ... --}}
 
         <!-- Recompensa 1: Descuento en Cafetería -->
         <article class="reward-card">
@@ -85,12 +83,13 @@
                 </div>
                 <div class="reward-info">
                     <div class="reward-title-row">
-                        {{-- [PHP/BD]: {{ $recompensa->nombre }} --}}
                         <h4>Descuento en Cafetería</h4>
-                        {{-- [PHP/BD]: estado: Bloqueado / Disponible / Canjeado --}}
-                        <span class="reward-status locked">Bloqueado</span>
+                        @if($altaCalificacion >= 3)
+                            <span class="reward-status unlocked" style="background: #dcfce7; color: #15803d;">Disponible</span>
+                        @else
+                            <span class="reward-status locked">Bloqueado</span>
+                        @endif
                     </div>
-                    {{-- [PHP/BD]: {{ $recompensa->descripcion }} --}}
                     <p>10% de descuento en cualquier compra de la cafetería institucional</p>
                 </div>
             </div>
@@ -102,8 +101,11 @@
 
             <p class="reward-meta"><strong>Requisito:</strong> Obtener ≥80% en 3 cuestionarios de DOMI</p>
 
-            {{-- [PHP/BD]: si está desbloqueada, cambiar a <a> o <button> activo (class="reward-btn unlocked") --}}
-            <button type="button" class="reward-btn" disabled>Completa más cuestionarios para desbloquear</button>
+            @if($altaCalificacion >= 3)
+                <button type="button" class="reward-btn unlocked" style="background: #2563eb;">Canjear recompensa</button>
+            @else
+                <button type="button" class="reward-btn" disabled>Completa más cuestionarios para desbloquear</button>
+            @endif
         </article>
 
         <!-- Recompensa 2: Décima Adicional -->
@@ -129,13 +131,10 @@
             </div>
 
             <p class="reward-meta"><strong>Requisito:</strong> ≥85% en ambos cuestionarios de Fundamentos de Programación</p>
-            {{-- [PHP/BD]: {{ $recompensa->docente->nombre }} --}}
             <p class="reward-meta"><strong>Docente:</strong> Dr. Roberto Sánchez Vargas</p>
 
             <button type="button" class="reward-btn" disabled>Completa los cuestionarios para desbloquear</button>
         </article>
-
-        {{-- [PHP/BD]: @endforeach --}}
 
     </section>
 

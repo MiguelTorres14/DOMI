@@ -13,24 +13,25 @@
 
 @section('content')
 
+    @php
+        $nombres = explode(' ', Auth::user()->name);
+        $iniciales = strtoupper(substr($nombres[0], 0, 1) . substr($nombres[1] ?? '', 0, 1));
+    @endphp
+
     <!-- Tarjeta central de Perfil del Alumno -->
     <section class="profile-card-container">
 
         <!-- Encabezado azul de la tarjeta -->
         <div class="profile-card-header">
-            {{-- [PHP/BD]: Si el alumno tiene foto en la BD, mostrar, si no, mostrar iniciales --}}
-            <div class="profile-avatar-box" id="avatarPreviewContainer">AG</div>
+            <div class="profile-avatar-box" id="avatarPreviewContainer">{{ $iniciales }}</div>
 
             <div class="profile-header-info">
-                {{-- [PHP/BD]: Nombre completo desde la BD --}}
-                <h1>Ana García López</h1>
-
-                {{-- [PHP/BD]: Matrícula desde la BD --}}
-                <p class="profile-matricula">ISC-2024-0312</p>
+                <h1>{{ Auth::user()->name }}</h1>
+                <p class="profile-matricula">Matrícula Pendiente</p> <!-- Dato estático por falta de campo en BD -->
 
                 <div class="profile-header-badges">
-                    {{-- [PHP/BD]: Semestre y estado --}}
-                    <span class="header-badge">3° Semestre</span>
+                    <!-- DINÁMICO: Semestre actual -->
+                    <span class="header-badge">{{ Auth::user()->semester }}° Semestre</span>
                     <span class="header-badge">Activo</span>
                 </div>
             </div>
@@ -42,40 +43,41 @@
             <!-- Fila 1: Nombre completo -->
             <div class="info-row">
                 <span class="info-label">Nombre completo</span>
-                <span class="info-value">Ana García López</span>
+                <span class="info-value">{{ Auth::user()->name }}</span>
                 <span class="readonly-tag">Solo lectura</span>
             </div>
 
             <!-- Fila 2: Matrícula -->
             <div class="info-row">
                 <span class="info-label">Matrícula</span>
-                <span class="info-value">ISC-2024-0312</span>
+                <span class="info-value">Pendiente de asignar</span>
                 <span class="readonly-tag">Solo lectura</span>
             </div>
 
-            <!-- Fila 3: Carrera -->
+            <!-- Fila 3: Escuela (Carrera) -->
             <div class="info-row">
-                <span class="info-label">Carrera</span>
-                <span class="info-value">Ingeniería en Sistemas Computacionales</span>
+                <span class="info-label">Institución</span>
+                <!-- DINÁMICO: Nombre de la escuela desde la relación -->
+                <span class="info-value">{{ Auth::user()->school->name ?? 'Institución no asignada' }}</span>
                 <span class="readonly-tag">Solo lectura</span>
             </div>
 
             <!-- Fila 4: Semestre actual -->
             <div class="info-row">
                 <span class="info-label">Semestre actual</span>
-                <span class="info-value">3° Semestre</span>
+                <!-- DINÁMICO: Semestre -->
+                <span class="info-value">{{ Auth::user()->semester }}° Semestre</span>
                 <span class="readonly-tag">Solo lectura</span>
             </div>
 
             <!-- Fila 5: Correo institucional -->
             <div class="info-row">
                 <span class="info-label">Correo institucional</span>
-                <span class="info-value">ana.garcia@universidad.edu.mx</span>
+                <span class="info-value">{{ Auth::user()->email }}</span>
                 <span class="readonly-tag">Solo lectura</span>
             </div>
 
             <!-- Sección para actualizar la foto de perfil -->
-            {{-- [PHP/BD]: Formulario POST que envía el archivo a un controlador Laravel (ej: route('perfil.avatar')) con enctype="multipart/form-data" --}}
             <form action="#" method="POST" enctype="multipart/form-data" class="profile-actions">
                 @csrf
                 <label for="subirImagenInput" class="btn-upload-image">

@@ -3,7 +3,7 @@
 
 :root {
     --sidebar-bg: #1e3a8a;
-    --sidebar-width: 280px;
+    --sidebar-width: 240px; /* MODIFICADO: Antes 280px, ahora igual que Inicio */
     --page-bg: #f4f6fb;
     --blue: #2563eb;
     --navy: #1e3a8a;
@@ -41,65 +41,70 @@ body {
 .sidebar-brand {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 24px 22px;
+    gap: 12px; /* Ajustado para el nuevo tamaño */
+    padding: 22px 20px; /* Ajustado para el nuevo tamaño */
     border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 .brand-icon {
-    width: 42px;
-    height: 42px;
+    width: 36px; /* MODIFICADO: Antes 42px */
+    height: 36px; /* MODIFICADO: Antes 42px */
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, .15);
     border-radius: 50%;
 }
-.brand-name { font-size: 24px; font-weight: 800; letter-spacing: .5px; }
+.brand-name { font-size: 18px; font-weight: 800; letter-spacing: .5px; } /* MODIFICADO: Antes 24px */
 
 .sidebar-nav {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 6px;
-    padding: 22px 14px;
+    padding: 20px 12px; /* Ajustado para el nuevo tamaño */
     overflow-y: auto;
 }
 .nav-item {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 14px 18px;
-    border-radius: 14px;
-    color: rgba(255, 255, 255, .85);
-    font-size: 15px;
-    font-weight: 600;
+    gap: 12px; /* Ajustado */
+    padding: 11px 16px; /* MODIFICADO: Antes 14px 18px */
+    border-radius: 999px; /* MODIFICADO: Bordes más redondos como Inicio */
+    color: rgba(255, 255, 255, .8);
+    font-size: 13px; /* MODIFICADO: Antes 15px */
+    font-weight: 500; /* MODIFICADO: Antes 600 */
     text-decoration: none;
     transition: background .2s, color .2s;
 }
 .nav-item:hover { background: rgba(255, 255, 255, .1); color: #fff; }
-.nav-item.active { background: #fff; color: var(--navy); }
+.nav-item.active { 
+    background: #fff; 
+    color: var(--navy); 
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12); /* Sombra de Inicio */
+}
 
 .sidebar-footer {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 18px 22px;
+    gap: 10px; /* Ajustado */
+    padding: 16px 20px; /* MODIFICADO: Antes 18px 22px */
     border-top: 1px solid rgba(255, 255, 255, .1);
 }
 .user-avatar-sm {
-    width: 40px;
-    height: 40px;
+    width: 34px; /* MODIFICADO: Antes 40px */
+    height: 34px; /* MODIFICADO: Antes 40px */
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, .18);
     border-radius: 50%;
-    font-size: 13px;
+    font-size: 11px; /* MODIFICADO: Antes 13px */
     font-weight: 700;
 }
 .user-details p { margin: 0; }
-.user-name { font-size: 14px; font-weight: 700; }
-.user-semester { font-size: 12px; color: rgba(255, 255, 255, .65); }
+.user-name { font-size: 12.5px; font-weight: 600; } /* MODIFICADO: Antes 14px */
+.user-semester { font-size: 11px; color: rgba(255, 255, 255, .65); margin-top: 2px; } /* MODIFICADO: Antes 12px */
 
 /* ===== Contenedor principal ===== */
 .main-wrapper {
@@ -108,6 +113,7 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow-y: scroll; /* MODIFICADO: Forza la barra de scroll para evitar saltos de tamaño */
 }
 
 /* ===== Topbar ===== */
@@ -118,14 +124,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 82px;
-    padding: 0 28px;
+    height: 64px; /* MODIFICADO: Antes 82px */
+    padding: 0 34px; /* MODIFICADO: Antes 28px */
     background: #fff;
+    border-bottom: 1px solid #e2e8f0; /* Borde de Inicio */
 }
-.page-title { margin: 0; font-size: 18px; font-weight: 800; color: var(--navy); }
+.page-title { margin: 0; font-size: 15px; font-weight: 700; color: var(--navy); } /* MODIFICADO: Antes 18px, 800 */
 
-.topbar-actions { display: flex; align-items: center; gap: 18px; }
-.greeting { font-size: 15px; color: var(--muted); }
+.topbar-actions { display: flex; align-items: center; gap: 16px; } /* Ajustado */
+.greeting { font-size: 13px; color: var(--muted); } /* MODIFICADO: Antes 15px */
 .greeting strong { color: var(--text); font-weight: 700; }
 
 .notification-btn {
@@ -133,8 +140,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
+    width: 32px; /* MODIFICADO: Antes 38px */
+    height: 32px; /* MODIFICADO: Antes 38px */
     background: none;
     border: none;
     border-radius: 50%;
@@ -144,10 +151,10 @@ body {
 .notification-btn:hover { background: #f1f5f9; }
 .notification-dot {
     position: absolute;
-    top: 6px;
-    right: 7px;
-    width: 9px;
-    height: 9px;
+    top: 4px; /* Ajustado */
+    right: 4px; /* Ajustado */
+    width: 7px; /* MODIFICADO: Antes 9px */
+    height: 7px; /* MODIFICADO: Antes 9px */
     background: #ef4444;
     border: 2px solid #fff;
     border-radius: 50%;
@@ -156,47 +163,47 @@ body {
 .profile-pill {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 6px 12px 6px 6px;
+    gap: 6px; /* Ajustado */
+    padding: 4px 10px 4px 4px; /* Ajustado */
     background: #f4f6fb;
     border-radius: 999px;
     color: var(--muted);
     cursor: pointer;
 }
 .avatar-circle {
-    width: 38px;
-    height: 38px;
+    width: 32px; /* MODIFICADO: Antes 38px */
+    height: 32px; /* MODIFICADO: Antes 38px */
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--blue);
     border-radius: 50%;
     color: #fff;
-    font-size: 13px;
+    font-size: 11px; /* MODIFICADO: Antes 13px */
     font-weight: 700;
 }
 
 /* ===== Área de contenido ===== */
 .content-area {
     flex: 1;
-    overflow-y: auto;
-    padding: 30px 28px 40px;
+    padding: 30px 28px 40px; /* Ajustado */
+    /* Quitamos el overflow-y: auto porque ya lo pusimos en main-wrapper */
 }
 
 /* ===== Botón de ayuda ===== */
 .help-fab {
     position: fixed;
-    right: 24px;
-    bottom: 24px;
-    width: 40px;
-    height: 40px;
+    right: 20px;
+    bottom: 20px;
+    width: 34px; /* MODIFICADO: Antes 40px */
+    height: 34px; /* MODIFICADO: Antes 40px */
     background: #fff;
     border: 1px solid #e2e8f0;
     border-radius: 50%;
     box-shadow: 0 2px 8px rgba(15, 23, 42, .12);
     color: var(--text);
     font-family: inherit;
-    font-size: 18px;
+    font-size: 16px; /* MODIFICADO: Antes 18px */
     font-weight: 600;
     cursor: pointer;
     z-index: 60;
